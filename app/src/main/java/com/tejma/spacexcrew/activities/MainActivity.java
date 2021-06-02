@@ -22,6 +22,7 @@ import com.tejma.spacexcrew.pojo.Crew;
 import com.tejma.spacexcrew.room.CrewRepository;
 import com.tejma.spacexcrew.room.CrewViewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -104,8 +105,10 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<List<Crew>> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
                 binding.parentLayout.setVisibility(View.VISIBLE);
-                if(t instanceof NetworkErrorException)
-                    Toast.makeText(MainActivity.this, "Network error", Toast.LENGTH_SHORT).show();
+                if(t instanceof IOException)
+                    Toast.makeText(MainActivity.this, "Network error. Showing offline data", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(MainActivity.this, "Error. Showing offline data", Toast.LENGTH_SHORT).show();
             }
         });
     }

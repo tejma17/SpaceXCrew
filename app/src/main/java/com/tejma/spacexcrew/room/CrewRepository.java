@@ -42,8 +42,9 @@ public class CrewRepository {
             this.crewDao = crewDao;
         }
 
+        @SafeVarargs
         @Override
-        protected Void doInBackground(List<Crew>... crews) {
+        protected final Void doInBackground(List<Crew>... crews) {
             crewDao.insert(crews[0]);
             return null;
         }

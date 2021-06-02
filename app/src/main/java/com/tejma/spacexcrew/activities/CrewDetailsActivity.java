@@ -77,8 +77,6 @@ public class CrewDetailsActivity extends AppCompatActivity {
                 binding.parentLayout.setVisibility(View.VISIBLE);
                 binding.progressBar.setVisibility(View.GONE);
                 new GetCrewMemberAsyncTask().execute(id);
-                if(t instanceof NetworkErrorException)
-                    Toast.makeText(CrewDetailsActivity.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }
